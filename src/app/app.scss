@@ -1,0 +1,119 @@
+:host {
+	display: block;
+	min-height: 100dvh;
+}
+
+.page-shell {
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+}
+
+.page-content {
+	width: min(1180px, calc(100% - 2rem));
+	margin: 0 auto;
+	padding: 1.5rem 0 3rem;
+	flex: 1;
+}
+
+.navbar {
+	width: min(1180px, calc(100% - 2rem));
+	margin: 1rem auto 0;
+	padding: 1rem 1.15rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	border: 1px solid var(--line);
+	border-radius: 1.5rem;
+	background: linear-gradient(135deg, rgba(11, 25, 39, 0.92), rgba(14, 33, 50, 0.78));
+	box-shadow: var(--shadow);
+	backdrop-filter: blur(14px);
+}
+
+.brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.9rem;
+	min-width: 0;
+}
+
+.brand__mark {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 1rem;
+	display: grid;
+	place-items: center;
+	background: linear-gradient(135deg, rgba(110, 231, 183, 0.22), rgba(245, 158, 11, 0.2));
+	color: var(--text-main);
+	font-family: var(--font-heading);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand__text {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.1;
+}
+
+.brand__text strong {
+	font-family: var(--font-heading);
+	font-size: 1rem;
+}
+
+.brand__text small {
+	color: var(--text-soft);
+	font-size: 0.86rem;
+}
+
+.nav-links {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+
+.nav-links a {
+	padding: 0.7rem 1rem;
+	border-radius: 999px;
+	color: var(--text-soft);
+	border: 1px solid transparent;
+	transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.nav-links a:hover {
+	color: var(--text-main);
+	transform: translateY(-1px);
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.nav-links a.active {
+	color: var(--text-main);
+	background: rgba(110, 231, 183, 0.12);
+	border-color: rgba(110, 231, 183, 0.26);
+}
+
+.nav-links__favorites {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+@media (max-width: 720px) {
+	.navbar {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.nav-links {
+		justify-content: stretch;
+	}
+
+	.nav-links a {
+		flex: 1 1 auto;
+		text-align: center;
+	}
+}

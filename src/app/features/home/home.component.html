@@ -1,0 +1,49 @@
+<section class="hero">
+  <div class="hero__copy">
+    <p class="hero__eyebrow">NASA APOD</p>
+    <h1>Explora la imagen astronómica del día y descubre el universo con NASA.</h1>
+    <p>
+      Astronomy Picture of the Day publica cada día una imagen distinta del cosmos con explicación científica,
+      permitiendo conocer nebulosas, galaxias, planetas y otros fenómenos espaciales.
+    </p>
+
+    <div class="hero__actions">
+      <a class="button button--primary" routerLink="/gallery">Ver galería</a>
+      <a class="button button--secondary" routerLink="/favorites">Abrir ruta protegida</a>
+    </div>
+  </div>
+
+  <aside class="hero__panel">
+    <span>Favoritos guardados</span>
+    <strong>{{ favoriteCount() }}</strong>
+    <p>imágenes guardadas desbloquean el acceso a la sección protegida.</p>
+  </aside>
+</section>
+
+<section class="highlights">
+  @for (item of highlights; track item.title) {
+    <article class="highlight-card">
+      <span>0{{ $index + 1 }}</span>
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.description }}</p>
+    </article>
+  }
+</section>
+
+<section class="notes">
+  <article>
+    <h2>Qué es NASA APOD</h2>
+    <p>
+      Es el proyecto de NASA que comparte una imagen o fotografía del cielo cada día, acompañada por una breve
+      explicación escrita por astrónomos y divulgadores científicos.
+    </p>
+  </article>
+
+  <article>
+    <h2>Qué puedes explorar</h2>
+    <p>
+      En la galería puedes revisar publicaciones recientes, abrir el detalle de cada imagen y guardar tus favoritas
+      para revisarlas después.
+    </p>
+  </article>
+</section>

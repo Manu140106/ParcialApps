@@ -1,0 +1,24 @@
+<article class="card">
+  <a class="card__link" [routerLink]="['/apod', item.date]">
+    <div class="card__media">
+      @if (item.media_type === 'image') {
+        <img [src]="item.url" [alt]="item.title" loading="lazy" />
+      } @else {
+        <img [src]="item.thumbnail_url || item.url" [alt]="item.title" loading="lazy" />
+        <span class="card__tag card__tag--video">Video</span>
+      }
+
+      <span class="card__tag">{{ item.date }}</span>
+    </div>
+
+    <div class="card__body">
+      <p class="card__eyebrow">{{ item.media_type === 'image' ? 'Imagen astronómica' : 'Video astronómico' }}</p>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.copyright || 'NASA APOD' }}</p>
+    </div>
+  </a>
+
+  <button type="button" class="card__button" (click)="toggleFavorite($event)">
+    {{ isFavorite() ? 'Quitar favorito' : 'Guardar favorito' }}
+  </button>
+</article>

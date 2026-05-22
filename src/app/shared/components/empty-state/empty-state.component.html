@@ -1,0 +1,9 @@
+<section class="empty-state">
+  <p class="empty-state__eyebrow">{{ eyebrow }}</p>
+  <h3>{{ title }}</h3>
+  <p>{{ description }}</p>
+
+  @if (ctaLabel && ctaLink) {
+    <a class="empty-state__cta" [routerLink]="ctaLink">{{ ctaLabel }}</a>
+  }
+</section>

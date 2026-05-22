@@ -1,0 +1,30 @@
+<section class="favorites-head">
+  <div>
+    <p class="favorites-head__eyebrow">Ruta protegida</p>
+    <h1>Favoritos</h1>
+    <p>
+      Esta sección solo se habilita cuando el usuario guarda al menos un elemento. Así se cumple el
+      requerimiento del Guard sin usar login.
+    </p>
+  </div>
+
+  @if (favorites().length > 0) {
+    <button type="button" class="favorites-head__clear" (click)="clearFavorites()">Vaciar favoritos</button>
+  }
+</section>
+
+@if (favorites().length === 0) {
+  <app-empty-state
+    eyebrow="Protección activa"
+    title="Aún no hay favoritos guardados"
+    description="Ve a la galería, guarda una tarjeta y vuelve a esta ruta para verla desbloqueada."
+    ctaLabel="Ir a galería"
+    ctaLink="/gallery"
+  />
+} @else {
+  <section class="favorites-grid">
+    @for (item of favorites(); track item.date) {
+      <app-apod-card [item]="item" />
+    }
+  </section>
+}

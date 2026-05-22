@@ -1,0 +1,65 @@
+.page-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.page-head__eyebrow {
+  margin: 0 0 0.4rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+}
+
+.page-head h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.page-head p {
+  margin: 0.5rem 0 0;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.page-head__actions {
+  min-width: 11rem;
+  display: grid;
+  gap: 0.5rem;
+  justify-items: end;
+}
+
+.refresh-button {
+  min-height: 3rem;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(110, 231, 183, 0.22);
+  background: rgba(110, 231, 183, 0.12);
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 960px) {
+  .page-head,
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-head {
+    align-items: stretch;
+  }
+
+  .page-head__actions {
+    justify-items: stretch;
+  }
+}

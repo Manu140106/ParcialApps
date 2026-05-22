@@ -1,0 +1,18 @@
+<header class="navbar">
+  <a class="brand" routerLink="/" aria-label="Ir a inicio">
+    <span class="brand__mark">NASA</span>
+    <span class="brand__text">
+      <strong>NASA APOD</strong>
+      <small>Astronomy Picture of the Day</small>
+    </span>
+  </a>
+
+  <nav class="nav-links" aria-label="Navegación principal">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+    <a routerLink="/gallery" routerLinkActive="active">Galería</a>
+    <a routerLink="/favorites" routerLinkActive="active" class="nav-links__favorites">
+      Favoritos
+      <span class="badge">{{ favoriteCount }}</span>
+    </a>
+  </nav>
+</header>

@@ -1,0 +1,62 @@
+@if (loading()) {
+  <app-loading-state
+    title="Cargando detalle"
+    description="Recuperando la información de NASA APOD seleccionada desde la API pública."
+  />
+} @else if (error()) {
+  <app-empty-state
+    eyebrow="Detalle no disponible"
+    [title]="error() ?? 'No fue posible cargar el elemento'"
+    description="Vuelve a la galería y selecciona otro resultado disponible."
+    ctaLabel="Ir a galería"
+    ctaLink="/gallery"
+  />
+} @else if (item(); as selectedItem) {
+  <section class="detail-layout">
+    <a class="back-link" routerLink="/gallery">← Volver a la galería</a>
+
+    <article class="detail-card">
+      <div class="detail-card__media">
+        @if (selectedItem.media_type === 'image') {
+          <img [src]="mediaUrl(selectedItem)" [alt]="selectedItem.title" />
+        } @else {
+          <iframe
+            [src]="mediaUrl(selectedItem)"
+            title="Video de NASA APOD"
+            allowfullscreen
+          ></iframe>
+        }
+      </div>
+
+      <div class="detail-card__content">
+        <p class="detail-card__eyebrow">Detalle del elemento</p>
+        <h1>{{ selectedItem.title }}</h1>
+
+        <div class="stats">
+          <div>
+            <span>Fecha</span>
+            <strong>{{ selectedItem.date }}</strong>
+          </div>
+          <div>
+            <span>Tipo</span>
+            <strong>{{ selectedItem.media_type }}</strong>
+          </div>
+          <div>
+            <span>Autor</span>
+            <strong>{{ selectedItem.copyright || 'NASA' }}</strong>
+          </div>
+          <div>
+            <span>Favorito</span>
+            <strong>{{ isFavorite() ? 'Sí' : 'No' }}</strong>
+          </div>
+        </div>
+
+        <p class="description">{{ selectedItem.explanation }}</p>
+
+        <button type="button" class="favorite-button" (click)="toggleFavorite()">
+          {{ isFavorite() ? 'Quitar favorito' : 'Guardar favorito' }}
+        </button>
+      </div>
+    </article>
+  </section>
+}

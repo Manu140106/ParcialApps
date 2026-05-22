@@ -1,0 +1,39 @@
+<section class="page-head">
+  <div>
+    <p class="page-head__eyebrow">Galería dinámica</p>
+    <h1>NASA APOD</h1>
+    <p>Explora imágenes y videos astronómicos recientes, guarda favoritos y abre el detalle por fecha.</p>
+  </div>
+
+  <div class="page-head__actions">
+    <button type="button" class="refresh-button" (click)="refreshGallery()">Alternar cantidad</button>
+    <p>{{ items().length }} resultados cargados</p>
+  </div>
+</section>
+
+@if (loading()) {
+  <app-loading-state
+    title="Cargando galería"
+    description="La aplicación está consultando la NASA APOD y preparando el listado."
+  />
+} @else if (error()) {
+  <app-empty-state
+    eyebrow="Error de API"
+    [title]="error() ?? 'No fue posible cargar los datos'"
+    description="Verifica tu conexión y vuelve a intentar la consulta."
+    ctaLabel="Recargar galería"
+    ctaLink="/gallery"
+  />
+} @else if (items().length === 0) {
+  <app-empty-state
+    eyebrow="Sin contenido"
+    title="No hay elementos disponibles"
+    description="La API no devolvió información en este momento. Intenta de nuevo más tarde."
+  />
+} @else {
+  <section class="cards-grid">
+    @for (item of items(); track item.date) {
+      <app-apod-card [item]="item" />
+    }
+  </section>
+}
